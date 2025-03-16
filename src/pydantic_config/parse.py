@@ -1,13 +1,13 @@
 from __future__ import annotations
 import copy
 import json
-from typing import TypeAlias
+from typing import TypeAlias, List, Union
 import sys
 import importlib
 
 from pydantic_config.errors import CliError, InvalidConfigFileError
 
-RawValue: TypeAlias = str | bool
+RawValue: TypeAlias = Union[str, bool]
 
 
 class Value:
@@ -117,7 +117,7 @@ def load_config_file(path: str, priority: int) -> NestedArgs:
     return wrap_value(content)
 
 
-def parse_args(args: list[str]) -> NestedArgs:
+def parse_args(args: List[str]) -> NestedArgs:
     """
     Parse and validated a list of raw arguments.
 

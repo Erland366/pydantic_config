@@ -1,12 +1,13 @@
 import copy
 from importlib.util import find_spec
+from typing import List, Optional, Union
 
 
 class PydanticConfigError(BaseException): ...
 
 
 class CliError(PydanticConfigError):
-    def __init__(self, args: list[str], wrong_index: list[int], error_msg: str, suggestion: list[str] | None = None):
+    def __init__(self, args: List[str], wrong_index: List[int], error_msg: str, suggestion: Optional[List[str]] = None):
         super().__init__()
         self.args = copy.deepcopy(args)
         self.wrong_index = wrong_index
